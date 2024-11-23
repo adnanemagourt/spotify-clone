@@ -6,7 +6,7 @@ export const useSpotifyAuth = () => {
     clientId: "d73dc5ebc3994ac3b57cf655fce8f0aa",
     // clientSecret: config.public.SPOTIFY_CLIENT_SECRET,
     clientSecret: "d41f1561a2dd4ba9a7e8712e5b53ef44",
-    redirectUri: `http://localhost:3000/callback`,
+    redirectUri: `https://spotify-clone-23-11.netlify.app/callback`,
     scope: [
       'streaming',
       'user-read-private',
