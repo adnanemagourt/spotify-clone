@@ -2,8 +2,10 @@ export const useSpotifyAuth = () => {
   const config = useRuntimeConfig()
   
   const spotifyConfig = {
-    clientId: config.public.SPOTIFY_CLIENT_ID,
-    clientSecret: config.public.SPOTIFY_CLIENT_SECRET,
+    // clientId: config.public.SPOTIFY_CLIENT_ID,
+    clientId: "d73dc5ebc3994ac3b57cf655fce8f0aa",
+    // clientSecret: config.public.SPOTIFY_CLIENT_SECRET,
+    clientSecret: "d41f1561a2dd4ba9a7e8712e5b53ef44",
     redirectUri: `https://spotify-clone-23-11.netlify.app/callback`,
     scope: [
       'streaming',
