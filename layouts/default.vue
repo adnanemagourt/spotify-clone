@@ -29,14 +29,14 @@
             <LibraryIcon class="w-6 h-6 mr-3" />
             <span>Your Library</span>
           </NuxtLink>
-          <NuxtLink 
+          <!-- <NuxtLink 
             to="/queue" 
             class="flex items-center text-gray-300 hover:text-white p-2 rounded transition"
             :class="{ 'bg-gray-800 text-white': route.path === '/queue' }"
           >
             <ListIcon class="w-6 h-6 mr-3" />
             <span>Queue</span>
-          </NuxtLink>
+          </NuxtLink> -->
           <NuxtLink 
             to="/profile" 
             class="flex items-center text-gray-300 hover:text-white p-2 rounded transition"
@@ -196,14 +196,14 @@
               <LibraryIcon class="w-6 h-6 mr-3" />
               <span>Your Library</span>
             </NuxtLink>
-            <NuxtLink 
+            <!-- <NuxtLink 
               to="/queue" 
               class="flex items-center text-gray-300 hover:text-white p-2 rounded transition"
               :class="{ 'bg-gray-800 text-white': route.path === '/queue' }"
             >
               <ListIcon class="w-6 h-6 mr-3" />
               <span>Queue</span>
-            </NuxtLink>
+            </NuxtLink> -->
             <NuxtLink 
               to="/profile" 
               class="flex items-center text-gray-300 hover:text-white p-2 rounded transition"
@@ -235,6 +235,9 @@
   UserIcon,
   ViewListIcon as ListIcon  // Changed this line
 } from '@heroicons/vue/solid'
+import { useRoute } from 'vue-router'
+import { useAuthStore } from '~/stores/auth'
+import { usePlayerStore } from '~/stores/player'
  
  const route = useRoute()
  const authStore = useAuthStore()

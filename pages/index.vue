@@ -55,6 +55,15 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue'
+import { useSpotifyApi } from '~/composables/useSpotifyApi'
+import { usePlayerStore } from '~/stores/player'
+import { usePlaylistStore } from '~/stores/playlist'
+import { useAuthStore } from '~/stores/auth'
+// import { navigateTo } from '~/utils/router'
+// import { PlusIcon } from '~/components/icons'
+
+
 const { getFeaturedPlaylists, getRecommendations } = useSpotifyApi()
 const playerStore = usePlayerStore()
 
@@ -109,7 +118,7 @@ const navigateToPlaylist = (id) => {
 }
 
 const playTrack = (track) => {
-  playerStore.setTrack(track)
+  playerStore.setTrack(track.uri)
 }
 
 onMounted(() => {

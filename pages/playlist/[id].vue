@@ -84,7 +84,7 @@ const fetchPlaylist = async () => {
 }
 
 const playTrack = (track) => {
-  playerStore.playTrack(track.uri)
+  playerStore.setTrack(track.uri)
 }
 
 const removeFromPlaylist = async (track) => {

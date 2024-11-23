@@ -1,3 +1,5 @@
+import { useAuthStore } from '@/stores/auth'
+
 export const useSpotifyApi = () => {
   const authStore = useAuthStore()
   const config = {

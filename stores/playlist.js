@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { useAuthStore } from './auth'
 
 export const usePlaylistStore = defineStore('playlist', {
   state: () => ({

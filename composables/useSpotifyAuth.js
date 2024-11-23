@@ -6,7 +6,7 @@ export const useSpotifyAuth = () => {
     clientId: "d73dc5ebc3994ac3b57cf655fce8f0aa",
     // clientSecret: config.public.SPOTIFY_CLIENT_SECRET,
     clientSecret: "d41f1561a2dd4ba9a7e8712e5b53ef44",
-    redirectUri: `https://spotify-clone-23-11.netlify.app/callback`,
+    redirectUri: `http://localhost:3000/callback`,
     scope: [
       'streaming',
       'user-read-private',
@@ -57,8 +57,19 @@ export const useSpotifyAuth = () => {
     }
   }
 
+  const getAuthUrl = () => {
+    const params = new URLSearchParams({
+      client_id: spotifyConfig.clientId,
+      response_type: 'code',
+      redirect_uri: spotifyConfig.redirectUri,
+      scope: spotifyConfig.scope
+    })
+    return `https://accounts.spotify.com/authorize?${params.toString()}`
+  }
+
   return {
     login,
-    getAccessToken
+    getAccessToken,
+    getAuthUrl
   }
 }

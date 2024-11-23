@@ -8,6 +8,24 @@
 </template>
 
 <script setup>
+const initializeSpotifyPlayer = async (token) => {
+  if (window.Spotify) {
+    playerStore.initializePlayer(token)
+  } else {
+    await new Promise(resolve => {
+      const script = document.createElement('script')
+      script.src = 'https://sdk.scdn.co/spotify-player.js'
+      script.onload = () => {
+        window.onSpotifyWebPlaybackSDKReady = () => {
+          playerStore.initializePlayer(token)
+          resolve()
+        }
+      }
+      document.body.appendChild(script)
+    })
+  }
+}
+
 const route = useRoute()
 const router = useRouter()
 const authStore = useAuthStore()

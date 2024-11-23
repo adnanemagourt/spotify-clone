@@ -3,7 +3,7 @@
     <div class="flex justify-between items-center mb-6">
       <h1 class="text-2xl font-bold text-white">Your Library</h1>
       <button 
-        @click="showCreateModal = true"
+        @click="openCreateModal"
         class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full"
       >
         Create Playlist
@@ -55,13 +55,43 @@
       No playlists found. Create one to get started!
     </div>
 
-    <!-- Rest of your template remains the same -->
+    <!-- Create Playlist Modal -->
+    <div 
+      v-if="showCreateModal"
+      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+      @click="showCreateModal = false"
+    >
+      <div 
+        class="bg-gray-900 p-6 rounded-lg w-96"
+        @click.stop
+      >
+        <h2 class="text-xl font-bold text-white mb-4">Create New Playlist</h2>
+        <input 
+          v-model="newPlaylistName"
+          type="text"
+          placeholder="Playlist Name"
+          class="w-full p-2 mb-4 bg-gray-800 text-white rounded"
+        />
+        <textarea 
+          v-model="newPlaylistDescription"
+          placeholder="Description"
+          class="w-full p-2 mb-4 bg-gray-800 text-white rounded"
+        ></textarea>
+        <button 
+          @click="createNewPlaylist"
+          class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full"
+        >
+          Create
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
 import { TrashIcon } from '@heroicons/vue/solid'
+import { usePlaylistStore } from '~/stores/playlist'
 
 const playlistStore = usePlaylistStore()
 const showCreateModal = ref(false)
@@ -76,6 +106,11 @@ onMounted(async () => {
     console.error('Error loading playlists:', error)
   }
 })
+
+const openCreateModal = () => {
+  console.log('Opening create modal') // Debug log
+  showCreateModal.value = true
+}
 
 const createNewPlaylist = async () => {
   if (!newPlaylistName.value.trim()) return
